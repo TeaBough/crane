@@ -929,10 +929,8 @@ func (c *container) createArgs(cmds []string, excluded []string) []string {
 		args = append(args, "--env-file", envFile)
 	}
 	// Expose
-	if !adHoc {
-		for _, expose := range c.RunParams().Expose() {
-			args = append(args, "--expose", expose)
-		}
+	for _, expose := range c.RunParams().Expose() {
+		args = append(args, "--expose", expose)
 	}
 	// GroupAdd
 	for _, groupAdd := range c.RunParams().GroupAdd() {
@@ -947,12 +945,16 @@ func (c *container) createArgs(cmds []string, excluded []string) []string {
 		args = append(args, "--interactive")
 	}
 	// Ip
-	if len(c.RunParams().Ip()) > 0 {
-		args = append(args, "--ip", c.RunParams().Ip())
+	if !adHoc {
+		if len(c.RunParams().Ip()) > 0 {
+			args = append(args, "--ip", c.RunParams().Ip())
+		}
 	}
 	// Ip6
-	if len(c.RunParams().Ip6()) > 0 {
-		args = append(args, "--ip6", c.RunParams().Ip6())
+	if !adHoc {
+		if len(c.RunParams().Ip6()) > 0 {
+			args = append(args, "--ip6", c.RunParams().Ip6())
+		}
 	}
 	// IPC
 	if len(c.RunParams().IPC()) > 0 {

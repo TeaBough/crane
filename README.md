@@ -307,7 +307,7 @@ in every minor version update.
 If you pass a command on the CLI to `lift` or `run`, Crane will add a timestamp
 to the container name (e.g. `foo` will become `foo-1447155694523`), making it
 possible to have multiple containers based on the same Crane config. Those ad
-hoc containers will have `expose`, `publish`, `publish-all` and `detach`
+hoc containers will have `ip`, `ip6`, `publish`, `publish-all` and `detach`
 disabled, and `rm` enabled. This feature is experimental, which means it can be
 changed or even removed in every minor version update.
 
