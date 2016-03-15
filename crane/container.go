@@ -1131,7 +1131,7 @@ func (c *container) createArgs(cmds []string, excluded []string) []string {
 		args = append(args, "--workdir", c.RunParams().Workdir())
 	}
 	// Name
-	args = append(args, "--name", c.ActualName(false))
+	args = append(args, "--name", c.ActualName(adHoc))
 	// Image
 	args = append(args, c.Image())
 	// Command
